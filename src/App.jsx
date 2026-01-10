@@ -1,43 +1,67 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-function App() {
-  const [count, setCount] = useState(0);
+import Header from "./components/Header";
+import RegistrationForm from "./components/RegistrationForm";
+import LocationModal from "./components/LocationModal";
+
+import ThankYou from "./pages/THANKYOU/ThankYou";
+import TermsAndConditions from "./pages/THANKYOU/TermsAndConditions";
+
+// ✅ ADMIN PAGES
+import Login from "./pages/admin/Login";
+import Dashboard from "./pages/admin/Dashboard";
+
+export default function App() {
+  const [location, setLocation] = useState(null);
+  const [modalOpen, setModalOpen] = useState(true);
 
   return (
-    <div className="w-full max-w-lg mx-auto text-center p-6">
-      <div className="flex justify-center gap-4">
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img
-            src={reactLogo}
-            className="logo react"
-            alt="React logo"
+    <>
+      {/* HOT TOASTER */}
+      <Toaster position="top-right" reverseOrder={false} />
+
+      <div className="min-h-screen app-bg ">
+        <Routes>
+
+          {/* ================= REGISTRATION PAGE ================= */}
+          <Route
+            path="/"
+            element={
+              <>
+                <LocationModal
+                  open={modalOpen}
+                  onSelect={(loc) => {
+                    setLocation(loc);
+                    setModalOpen(false);
+                  }}
+                  onClose={() => {
+                    if (location) setModalOpen(false);
+                  }}
+                />
+
+                <Header />
+
+                {location && (
+                  <RegistrationForm selectedLocation={location} />
+                )}
+              </>
+            }
           />
-        </a>
+
+          {/* ================= ADMIN LOGIN ================= */}
+          <Route path="/admin/login" element={<Login />} />
+
+          {/* ================= ADMIN DASHBOARD ================= */}
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+
+          {/* ================= THANK YOU ================= */}
+          <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+
+        </Routes>
       </div>
-      <h1 className=" text-3xl font-bold my-6">
-        Vite + React + Daisy UI
-      </h1>
-      <div className=" text-center bg-base-300 p-12">
-        <button
-          className="btn btn-primary w-40 mx-auto mb-6"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-      </div>
-    </div>
+    </>
   );
 }
-
-export default App;

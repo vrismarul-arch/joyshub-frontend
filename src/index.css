@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* -------- CUSTOM THEME -------- */
+body {
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Green textured background */
+.app-bg {
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Registration box */
+.form-wrapper {
+  background-color: white;
+  border-radius: 10px;
+  padding: 24px;  
+}
+
+/* Labels */
+.form-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Inputs */
+input,
+textarea {
+  border-color: #1f4f3a !important;
+}
+
+/* Photo box */
+.photo-box {
+  border: 3px solid #1f4f3a;
+  color: #1f4f3a;
+  font-weight: 600;
+}
+
+/* Section divider */
+.section-bar {
+  height: 8px;
+  background-color: #1f4f3a;
+  margin: 40px 0;
+}

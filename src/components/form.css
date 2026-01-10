@@ -1,0 +1,24 @@
+.reg-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.reg-header-image {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .reg-header {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .reg-header-image {
+    justify-content: flex-end;
+  }
+}

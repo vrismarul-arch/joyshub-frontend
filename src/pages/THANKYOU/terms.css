@@ -1,0 +1,131 @@
+/* ===============================
+   TERMS PAGE
+   =============================== */
+.term-item {
+  margin-bottom: 18px;
+}
+
+.term-item h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.term-item p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #1f2937;
+}
+
+.terms-page {
+  min-height: 100vh;
+  background: #f4f6fa00;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.terms-header {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.terms-header h1 {
+  color: #ffffff;
+  font-size: 26px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* ===============================
+   CONTENT CARD
+   =============================== */
+
+.terms-content {
+  max-width: 900px;
+  margin: -24px auto 40px;
+  background: #ffffff;
+  padding: 28px 22px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   LIST
+   =============================== */
+
+.terms-content ol {
+  padding-left: 18px;
+}
+
+.terms-content li {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  color: #1f2937;
+}
+
+.terms-content b {
+  font-weight: 700;
+}
+
+/* ===============================
+   ACCEPT TEXT
+   =============================== */
+
+.accept-text {
+  margin-top: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ===============================
+   SIGNATURES
+   =============================== */
+
+.signature-row {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.signature-box {
+  text-align: center;
+}
+
+.signature-box .line {
+  width: 100%;
+  max-width: 260px;
+  height: 1.5px;
+  background: #000;
+  margin: 0 auto 6px;
+}
+
+.signature-box span {
+  font-size: 14px;
+  color: #111827;
+}
+
+/* ===============================
+   DESKTOP
+   =============================== */
+
+@media (min-width: 768px) {
+  .terms-header h1 {
+    font-size: 32px;
+  }
+
+  .terms-content {
+    padding: 36px 40px;
+  }
+
+  .signature-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

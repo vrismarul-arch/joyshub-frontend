@@ -1,8 +1,15 @@
-/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        joygreen: "#1f4f3a",
+        joylight: "#f8faf9"
+      }
+    },
   },
-  plugins: [require('daisyui')],
-};
+  daisyui: {
+    themes: ["light"],
+  },
+  plugins: [require("daisyui")],
+}
