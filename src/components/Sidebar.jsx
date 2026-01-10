@@ -6,7 +6,7 @@ export default function Sidebar() {
 
   const logout = () => {
     localStorage.removeItem("adminToken")
-    navigate("/login")
+    navigate("/admin/login")
   }
 
   return (

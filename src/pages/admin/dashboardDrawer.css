@@ -1,108 +1,203 @@
-/* ================= ROOT ================= */
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
 
+/* ================= ROOT ================= */
 .dashboard-wrapper {
-  background: #0b0f1a;
+  padding: 24px;
   min-height: 100vh;
+  background: #020617; /* dark navy */
   color: #e5e7eb;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #f9fafb;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.refresh-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #e5e7eb;
+  border: none;
+  cursor: pointer;
+}
+.refresh-btn:hover {
+  background: #334155;
 }
 
 /* ================= TABLE ================= */
+.table-container {
+  background: #020617;
+  border-radius: 14px;
+  border: 1px solid #1e293b;
+  overflow: hidden;
+}
 
 .dashboard-table {
   width: 100%;
   border-collapse: collapse;
-  background: #111827;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.dashboard-table thead {
-  background: #020617;
-}
-
-.dashboard-table th,
-.dashboard-table td {
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 14px;
 }
 
 .dashboard-table th {
-  color: #94a3b8;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.dashboard-table tbody tr {
-  border-top: 1px solid #1e293b;
-  transition: background 0.2s ease;
-}
-
-.dashboard-table tbody tr:hover {
+  padding: 14px;
+  font-size: 13px;
+  text-align: left;
   background: #020617;
+  color: #94a3b8;
+  border-bottom: 1px solid #1e293b;
 }
 
 .dashboard-table td {
+  padding: 14px;
+  font-size: 14px;
   color: #e5e7eb;
+  border-top: 1px solid #1e293b;
 }
 
-/* ================= ACTION BUTTONS ================= */
+.dashboard-table tr:hover {
+  background: #020617;
+}
 
-.dashboard-table button {
-  padding: 6px 12px;
-  border-radius: 8px;
+/* ================= CELLS ================= */
+.reg-badge {
+  font-weight: 600;
+  color: #60a5fa;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1e293b;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-sub {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ================= STATUS ================= */
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-pill.new {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+}
+
+.status-pill.active {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+.status-pill.inactive {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+/* ================= ACTIONS ================= */
+.view-btn,
+.delete-btn {
+  padding: 6px 10px;
   font-size: 13px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  margin-right: 8px;
-  transition: all 0.2s ease;
 }
 
-.dashboard-table button:first-child {
-  background: #2563eb;
-  color: #fff;
+.view-btn {
+  background: rgba(99, 102, 241, 0.15);
+  color: #c7d2fe;
+}
+.view-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
 }
 
-.dashboard-table button:first-child:hover {
-  background: #1d4ed8;
+.delete-btn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
 }
 
-.dashboard-table button:last-child {
-  background: #7f1d1d;
-  color: #fecaca;
+/* ================= LOADING ================= */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 }
 
-.dashboard-table button:last-child:hover {
-  background: #991b1b;
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #1e293b;
+  border-top: 4px solid #60a5fa;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* ================= DRAWER OVERLAY ================= */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-.drawer-overlay {
+/* ================= DRAWER ================= */
+.drawer-root {
   position: fixed;
   inset: 0;
-  z-index: 1000;
   display: flex;
+  z-index: 1000;
 }
 
 .drawer-backdrop {
   flex: 1;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(3px);
+  background: rgba(2, 6, 23, 0.85);
 }
-
-/* ================= DRAWER PANEL ================= */
 
 .drawer-panel {
   width: 420px;
-  max-width: 100%;
   background: #020617;
-  height: 100%;
-  overflow-y: auto;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-  animation: slideIn 0.3s ease forwards;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease;
 }
 
 @keyframes slideIn {
@@ -115,168 +210,175 @@
 }
 
 /* ================= DRAWER HEADER ================= */
-
-.drawer-header {
+.drawer-header-gradient {
+  padding: 18px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  border-bottom: 1px solid #1e293b;
+  gap: 12px;
+  background: linear-gradient(135deg, #1e293b, #020617);
 }
 
-.drawer-header h2 {
-  font-size: 18px;
-  font-weight: 600;
+.drawer-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #334155;
+  object-fit: cover;
+  cursor: zoom-in;
 }
 
-.drawer-header button {
-  background: none;
+.drawer-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.drawer-actions button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
   border: none;
-  font-size: 20px;
-  color: #94a3b8;
   cursor: pointer;
 }
-
-.drawer-header button:hover {
-  color: #e5e7eb;
+.drawer-actions button:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* ================= DRAWER BODY ================= */
-
-.drawer-body {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.drawer-scroll-body {
+  padding: 16px;
+  overflow-y: auto;
 }
 
-/* ================= SECTIONS ================= */
-
-.drawer-section h4 {
-  font-size: 13px;
-  font-weight: 600;
-  color: #60a5fa;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+/* ================= INFO CARD ================= */
+.drawer-card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
 }
 
-.drawer-section > div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* ================= DETAIL ROW ================= */
-
-.detail-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
+.drawer-card h4 {
+  margin: 0 0 10px;
   font-size: 14px;
+  font-weight: 700;
+  color: #f9fafb;
+}
+
+/* ================= INPUT ================= */
+.detail-row {
+  margin-bottom: 10px;
 }
 
 .detail-row span:first-child {
-  color: #94a3b8;
-}
-
-.detail-row span:last-child {
-  color: #e5e7eb;
-  text-align: right;
-  max-width: 60%;
-  word-break: break-word;
-}
-
-/* ================= REFERENCE BADGES ================= */
-
-.ref-badge {
-  display: inline-block;
-  background: #1e293b;
-  color: #93c5fd;
-  padding: 6px 10px;
-  border-radius: 999px;
   font-size: 12px;
-  margin: 4px 6px 0 0;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 4px;
 }
 
-/* ================= MEDIA GRID ================= */
-
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.media-grid img {
+.detail-row input,
+.detail-row textarea {
   width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid #1e293b;
-}
-
-/* ================= STATUS SELECT ================= */
-
-.status-select {
-  width: 100%;
-  padding: 10px 12px;
+  padding: 8px 10px;
   background: #020617;
+  color: #f9fafb;
   border: 1px solid #1e293b;
-  color: #e5e7eb;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 14px;
 }
 
-.status-select:focus {
+.detail-row input:focus,
+.detail-row textarea:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #60a5fa;
 }
 
-/* ================= DELETE MODAL ================= */
+.detail-row textarea {
+  resize: vertical;
+  min-height: 60px;
+}
 
-.delete-modal {
+/* ================= DOCUMENT IMAGES ================= */
+.drawer-card img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #1e293b;
+  margin-bottom: 8px;
+  cursor: zoom-in;
+}
+
+/* ================= ZOOM ================= */
+.zoom-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(2, 6, 23, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2000;
 }
 
-.delete-box {
+.zoomed-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+/* ================= CONFIRM MODAL ================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+}
+
+.confirm-box {
   background: #020617;
+  color: #e5e7eb;
   padding: 24px;
-  border-radius: 14px;
   width: 320px;
+  border-radius: 14px;
+  border: 1px solid #1e293b;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-.delete-box p {
-  margin-bottom: 20px;
-  font-size: 15px;
+.confirm-box p {
+  color: #94a3b8;
 }
 
-.delete-box button {
-  padding: 8px 16px;
+.confirm-box button {
+  padding: 8px 14px;
   border-radius: 8px;
   border: none;
-  cursor: pointer;
-  font-size: 14px;
-  margin: 0 6px;
-}
-
-.delete-box button:first-child {
   background: #1e293b;
   color: #e5e7eb;
+  cursor: pointer;
+  margin: 6px;
 }
 
-.delete-box .danger {
-  background: #991b1b;
-  color: #fee2e2;
+.confirm-box .danger-btn {
+  background: #dc2626;
+  color: white;
 }
 
-.delete-box .danger:hover {
-  background: #b91c1c;
+/* ================= SCROLLBAR ================= */
+.drawer-scroll-body::-webkit-scrollbar {
+  width: 6px;
+}
+.drawer-scroll-body::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 640px) {
+  .drawer-panel {
+    width: 100%;
+  }
 }

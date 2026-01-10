@@ -2,6 +2,7 @@ import { useState } from "react"
 import { adminLogin } from "../../api/axios"
 import { useNavigate } from "react-router-dom"
 import { Eye, EyeOff } from "lucide-react"
+import "./AdminLogin.css"
 
 export default function Login() {
   const navigate = useNavigate()
@@ -22,53 +23,45 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-900 flex items-center justify-center px-4">
-      <div className="bg-neutral-800 p-8 rounded-2xl w-full max-w-sm space-y-6">
+    <div className="admin-login-page">
+      <div className="login-card">
 
-        <h2 className="text-2xl font-semibold text-center">
-          Admin Login
-        </h2>
+        <h2 className="login-title">Admin Panel</h2>
+        <p className="login-subtitle">Secure Access</p>
 
-        {error && (
-          <p className="text-red-400 text-sm text-center">
-            {error}
-          </p>
-        )}
+        {error && <div className="error-box">{error}</div>}
 
         {/* EMAIL */}
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-3"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="input-group">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>Email Address</label>
+        </div>
 
-        {/* PASSWORD WITH TOGGLE */}
-        <div className="relative">
+        {/* PASSWORD */}
+        <div className="input-group">
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            className="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-3 pr-12"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <label>Password</label>
 
-          <button
-            type="button"
+          <span
+            className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-200"
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-          </button>
+          </span>
         </div>
 
-        {/* SUBMIT */}
-        <button
-          onClick={submit}
-          className="w-full bg-green-600 hover:bg-green-500 py-3 rounded-xl font-semibold transition"
-        >
-          Login
+        <button className="login-btn" onClick={submit}>
+          Sign In
         </button>
 
       </div>
